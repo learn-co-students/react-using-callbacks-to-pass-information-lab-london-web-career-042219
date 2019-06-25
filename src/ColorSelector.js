@@ -1,11 +1,6 @@
 import React, { Component } from "react";
-import changeColor from "./Matrix.js";
 
 export default class ColorSelector extends Component {
-  newColor = event => {
-    debugger;
-  };
-
   makeColorSwatches = () =>
     [
       "#F00",
@@ -18,13 +13,13 @@ export default class ColorSelector extends Component {
       "#FFF",
       "#000"
     ].map((str, idx) => {
+      const colorFunc = () => this.props.setColor(str);
       return (
         <div
           key={idx}
+          onClick={colorFunc}
           className="color-swatch"
-          colorcode={str}
           style={{ backgroundColor: str }}
-          onClick={this.newColor.bind(this, this.colorcode)}
         />
       );
     });
